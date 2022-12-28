@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test: Investor List</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+</head>
+<body>
+    <h1>Investors List</h1>
+    <table id="investors-container"></table>
+
+    
+
+</body>
+
+<script>
+    let investorsContainer = document.getElementById('investors-container')
+    let getInvestors = async () => {
+        let user = 'testUser';
+        let password = '!QAZ1qaz';
+        data = {
+                    "username": user,
+                    "password": password
+                }
+        let tokenDetailsResp = await fetch('http://localhost:8000/api/generate-auth', {
+            method: 'POST',
+            cache: 'no-cache',
+            headers: {
+                        'Content-Type': 'application/json'                       
+                    },
+            body: JSON.stringify(data) 
+        });
+        tokenDetails = await tokenDetailsResp.json()
+        token = tokenDetails['Token']
+        // console.log(token) 
+        // const myHeaders = new Headers();
+        // myHeaders.append('Content-Type', 'application/json');
+        // myHeaders.append('Authorization', 'Token '+token);
+        // myHeaders.append('X-CSRFToken', 'gqLj3jWtPuZnJobVAt2kagGAqGtCgRgj');
+        let response = await fetch('http://localhost:8000/api/search-investors',{
+            method: 'GET',
+            cache: 'no-cache',
+            headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Token '+token                        
+                    }
+        })
+        let investors = await response.json()
+        let lables =    `<tr>
+                            <th>Investor Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Added Date</th>
+                            <th>Last Updated</th>
+                            <th>Description</th> 
+                        </tr>`
+        investorsContainer.innerHTML += lables 
+        for (let i = 0; investors.length > i; i++) {
+            let investor = investors[i]
+            let added = new Date(investor.added);
+            let updated = new Date(investor.updated);
+            let row = `<tr>
+                            <td>${investor.name}</td>
+                            <td>${investor.email}</td>
+                            <td>${investor.phone}</td>
+                            <td>${added.toString()}</td>
+                            <td>${updated.toString()}</td>
+                            <td><small>${investor.description}</small></td>
+                        </tr>`
+
+                        investorsContainer.innerHTML += row
+        }
+    }
+
+    getInvestors()
+
+</script>
+
+</html>
