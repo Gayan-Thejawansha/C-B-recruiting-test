@@ -88,7 +88,7 @@ def updateInvestor(request):
         
         # investor = models.Investor(name = _name , email = _email, phone = _phone, description = _description)
         investor.save()
-        return Response('Successfully created the Investor.', status=status.HTTP_201_CREATED)
+        return Response('Successfully updated the Investor.', status=status.HTTP_201_CREATED)
     except IntegrityError as e:
         #error = 'Error on line {}'.format(sys.exc_info()[-1].tb_lineno)+ str(type(e).__name__) + str(e)
         error = str(e.__context__)
