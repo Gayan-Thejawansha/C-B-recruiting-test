@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "5cdee710-8a29-4da8-87ae-5e1ec4993caf",
+		"name": "Ecosystem_of_services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25115262"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8000/api/generate-auth",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"testUser\",\r\n  \"password\": \"!QAZ1qaz\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/generate-auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"generate-auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/create-investor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 10af811168b431d3d72a126f4f19f5680699bdf9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"FirstName LastName\",\r\n  \"email\": \"example@email.com\",\r\n  \"phone\": \"0112224448\",\r\n  \"description\": \"Sample Description.\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/create-investor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"create-investor"
+					]
+				},
+				"description": "Create Investor"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/delete-investor/example@email.com",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Token 10af811168b431d3d72a126f4f19f5680699bdf9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/delete-investor/example@email.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"delete-investor",
+						"example@email.com"
+					]
+				},
+				"description": "Delete Investor"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/search-investors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 10af811168b431d3d72a126f4f19f5680699bdf9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/investors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"investors"
+					]
+				},
+				"description": "Get all investors"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/search-investors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 10af811168b431d3d72a126f4f19f5680699bdf9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/search-investors?name=Gayan&email=gmail.com&phone=0112224448",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"search-investors"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Gayan"
+						},
+						{
+							"key": "email",
+							"value": "gmail.com"
+						},
+						{
+							"key": "phone",
+							"value": "0112224448"
+						}
+					]
+				},
+				"description": "Search investors with query params"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/search-investors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 10af811168b431d3d72a126f4f19f5680699bdf9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/investors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"investors"
+					]
+				},
+				"description": "Get ALL INVESTORS"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/search-investors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 10af811168b431d3d72a126f4f19f5680699bdf9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/investor/gthejawansha2@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"investor",
+						"gthejawansha2@gmail.com"
+					]
+				},
+				"description": "Get a specific Investor"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/update-investor?email=1thejawansha3%40gmail.com",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 10af811168b431d3d72a126f4f19f5680699bdf9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n  \"description\": \"Description Updated Again.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/update-investor?email=1thejawansha3%40gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"update-investor"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "1thejawansha3%40gmail.com"
+						}
+					]
+				},
+				"description": "Update Investor"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/search-investors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Token 10af811168b431d3d72a126f4f19f5680699bdf9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api"
+					]
+				},
+				"description": "Get All available APIs"
+			},
+			"response": []
+		}
+	]
+}
