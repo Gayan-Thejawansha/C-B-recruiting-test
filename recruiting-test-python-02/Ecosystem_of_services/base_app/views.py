@@ -18,7 +18,12 @@ def getRoutes(request):
     routes = [
         'GET /api',
         'GET /api/investors',
-        'GET /api/investors/:id'
+        'GET /api/investors/:email',
+        'POST /api/create-investor',
+        'PUT /api/update-investor/:email',
+        'GET /api/search-investors?QueryParams[name, email, phone]',
+        'DELETE /api/delete-investor/:email',
+        'POST /api/generate-auth',
     ]
     return Response(routes)
 
